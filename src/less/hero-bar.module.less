@@ -1,0 +1,39 @@
+@import (reference) 'global.less';
+
+.bar {
+  background: .color.grey[light];
+  padding: .padding[small] var(--paddingHorizontal);
+  text-align: center;
+}
+
+.items {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.item {
+  line-height: 2em;
+  display: inline-flex;
+  padding: .padding[small];
+  color: .color.grey[medium];
+}
+
+.gtContainer {
+  &:hover {
+    .gtText {
+      display: none;
+    }
+
+    .gtElement {
+      display: inline-flex;
+    }
+  }
+}
+
+.gtText {
+  display: inline-flex;
+}
+
+.gtElement {
+  display: none;
+}

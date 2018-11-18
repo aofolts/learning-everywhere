@@ -1,14 +1,23 @@
 import React,{Fragment} from 'react'
 import {withLayout} from '../components/layout'
 import {graphql} from 'gatsby'
+import Hero from '../components/hero-home'
 
 const Index = ({
   page,
   layout
 }) => {
+  const {
+    featuredImage,
+  } = page
+
+  const {
+    heroHeadline
+  } = layout
+
   return (
     <Fragment>
-      <h1>home</h1>
+      <Hero headline={heroHeadline} image={featuredImage}/>
     </Fragment>
   )
 }

@@ -41,6 +41,7 @@ class Layout extends Component {
           <meta name='keywords' content={keywords.join(',')}/>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <link rel='shortcut icon' type='image/png' href={favicon}/>
+          <link href="https://fonts.googleapis.com/css?family=Rubik:400,500" rel="stylesheet"></link>
         </Helmet>
         {/* <Header/> */}
         {this.props.children}
@@ -68,8 +69,18 @@ export function withLayout(Component) {
     } = props
 
     const {
+      page
+    } = data
+
+    const {
+      layout: layoutData
+    } = page
+
+    const layout = layoutData[0]
+
+    const {
       seo
-    } = data.page
+    } = page
 
     const meta = {
       seo: {
@@ -80,7 +91,7 @@ export function withLayout(Component) {
 
     return (
       <Layout {...meta}>
-        <Component {...props}/>
+        <Component {...props} {...{page,layout}}/>
       </Layout>
     )
   }

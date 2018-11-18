@@ -4,23 +4,21 @@ import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
 
 const buttonTypeClasses = {
-  primary: css.primaryButton,
-  primaryLight: css.primaryLightButton
+  primary: css.buttonPrimary,
+  primaryLight: css.buttonPrimaryLight,
+  secondaryLight: css.buttonSecondaryLight
 }
 
 const Button = ({
   label,
-  link,
-  type
+  anchor,
+  type,
+  page,
+  url
 }) => {
   const buttonClass = [
     buttonTypeClasses[type]
   ].join(' ')
-
-  const {
-    page,
-    url
-  } = link
 
   if (page) {
     return (
@@ -50,5 +48,5 @@ Button.defaultProps = {
 
 Button.propTypes = {
   label: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['primary','primaryLight'])
+  type: PropTypes.oneOf(['primary','primaryLight','secondaryLight'])
 }

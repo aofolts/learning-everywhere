@@ -1,0 +1,28 @@
+@import (reference) 'global.less';
+
+.section {
+  height: 75rem;
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: hidden;
+  background: .color[black];
+}
+
+.background {
+  .backgroundFilter;
+  z-index: 0;
+}
+
+.content {
+  z-index: 20;
+  max-width: 100%;
+  .wrap(@span: 10);
+  text-align: center;
+}
+
+.headline {
+  color: white;
+  text-align: center;
+}
