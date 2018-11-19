@@ -1,6 +1,5 @@
 import './src/less/global.less'
 
-const gtScript = document.createElement('script')
 const script = document.createElement('script')
 
 script.innerHTML = `

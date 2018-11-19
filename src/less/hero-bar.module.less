@@ -2,7 +2,7 @@
 
 .bar {
   background: .color.grey[light];
-  padding: .padding[small] var(--paddingHorizontal);
+  padding: 0 var(--paddingHorizontal);
   text-align: center;
 }
 
@@ -12,10 +12,10 @@
 }
 
 .item {
-  line-height: 2em;
   display: inline-flex;
-  padding: .padding[small];
+  padding: .padding[small] .padding[small];
   color: .color.grey[medium];
+  font-size: .paragraph.secondary[font-size];
 
   @media .query.phone[default] {
     padding: .padding[extraSmall];
@@ -25,19 +25,24 @@
 .gtContainer {
   &:hover {
     .gtText {
-      display: none;
+      opacity: 0;
     }
 
     .gtElement {
-      display: inline-flex;
+      opacity: 1;
     }
   }
 }
 
 .gtText {
   display: inline-flex;
+  border-bottom: .border.weight[default] dotted .color.grey[medium];
 }
 
 .gtElement {
-  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
 }

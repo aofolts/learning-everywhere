@@ -15,9 +15,29 @@
 ////////////////////////////////////////////////////////
 
 .color() {
-  black: #444;
+  black: #555;
   .grey() {
     medium: #555;
+  }
+}
+
+////////////////////////////////////////////////////////
+// GRID
+////////////////////////////////////////////////////////
+
+.grid() {
+  .thirds() {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    grid-gap: var(--paddingHorizontal);
+    
+    @supports not (display: grid) {
+      display: flex;
+
+      @media .query.phone[default] {
+        display: block;
+      }
+    }
   }
 }
 
@@ -53,4 +73,26 @@
 
 .paragraph() {
   font-family: 'Rubik',sans-serif;
+  font-weight: 300;
+  line-height: 1.3em;
+}
+
+////////////////////////////////////////////////////////
+// WRAPS
+////////////////////////////////////////////////////////
+
+.wrapMedium {
+  .wrap(
+    @span: 10,
+    @padding: default,
+    @align: center
+  );
+}
+
+.wrapMain {
+  .wrap(
+    @span: 12,
+    @padding: default,
+    @align: center
+  );
 }

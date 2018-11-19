@@ -41,7 +41,7 @@ class Layout extends Component {
           <meta name='keywords' content={keywords.join(',')}/>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <link rel='shortcut icon' type='image/png' href={favicon}/>
-          <link href="https://fonts.googleapis.com/css?family=Rubik:400,500" rel="stylesheet"></link>
+          <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet"></link>
         </Helmet>
         {/* <Header/> */}
         {this.props.children}

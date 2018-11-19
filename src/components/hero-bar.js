@@ -28,28 +28,19 @@ class HeroBar extends Component {
       fax
     } = settings
   
-    const items = [
-      phone,
-      fax
-    ].map(info => {
-      return (
-        <li key={info} className={css.item}>
-          {info}
-        </li>
-      )
-    })
-  
-    items.push(
-      <Translate key='translate'/>
-    )
-  
     return (
       <div className={css.bar}>
         <Helmet>
           <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         </Helmet>
         <ul className={css.items}>
-          {items}
+          <li key={phone} className={css.item}>
+            Phone: {phone}
+          </li>
+          <li key={fax} className={css.item}>
+            Fax: {fax}
+          </li>
+          <Translate key='translate'/>
         </ul>
       </div>
     )
