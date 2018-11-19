@@ -5,6 +5,7 @@ import Hero from '../components/hero-home'
 import BackgroundImage from '../components/image-background'
 import css from '../less/home.module.less'
 import ServicesSection from '../components/section-home-services'
+import Button from '../components/button'
 
 const IntroSection = ({
   cards
@@ -37,9 +38,35 @@ const IntroSection = ({
   )
 }
 
+const CtaSection = ({
+  medium
+}) => {
+  return (
+    <section id='ctas' className={css.ctaSection}>
+      <div className='wrapMain'>
+        <div className={css.ctas}>
+          <div className={css.cta}>
+            <h2>Our Blog</h2>
+            <Button label='View on Medium' url={medium.link}/>
+          </div>
+          <div className={css.cta}>
+            <h2>ECQ Courses</h2>
+            <Button label='View on Medium' link='/courses'/>
+          </div>
+          <div className={css.cta}>
+            <h2>Our Projects</h2>
+            <Button label='View on Medium' link='/projects'/>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 const Index = ({
   page,
-  layout
+  layout,
+  data
 }) => {
   const {
     featuredImage,
@@ -57,6 +84,7 @@ const Index = ({
       <Hero headline={heroHeadline} image={featuredImage}/>
       <IntroSection cards={introCards}/>
       <ServicesSection headline={servicesHeadline} cards={serviceCards}/>
+      <CtaSection medium={data.medium}/>
     </Fragment>
   ) 
 }
@@ -79,8 +107,11 @@ export const query = graphql`
             ...cardImage
           }     
         }
-        ...homeServices   
+        ...homeServices
       }
+    }
+    medium: contentfulSocialAccount(platform: {eq: "Medium"}) {
+      url
     }
   }
 `

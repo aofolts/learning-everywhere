@@ -14,3 +14,25 @@
   padding-bottom: 56%;
   margin-bottom: .padding[mediumSmall];
 }
+
+////////////////////////////////////////////////////////
+// CTAS
+////////////////////////////////////////////////////////
+
+.ctaSection {
+  background: .color.grey[mediumLight];
+}
+
+.ctas {
+  .grid.thirds;
+}
+
+.cta {
+  text-align: center;
+
+  @media .query.phone[default] {
+    & + .cta {
+      margin-top: .padding[medium];
+    }
+  }
+}
