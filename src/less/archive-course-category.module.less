@@ -1,0 +1,23 @@
+@import (reference) 'global.less';
+
+.coursesSection {
+  background: .color.grey[light];
+}
+
+.courseCategories {
+  font-size: .paragraph.secondary[font-size];
+  margin: 0 -.5em;
+}
+
+.courseCategory {
+  display: inline-block;
+  padding: .25em;
+  margin: .5em;
+  border-bottom: .border.weight[default] solid .color.primary[light];
+  font-weight: .paragraph.bold[font-weight];
+  color: .color[primary];
+
+  &:hover {
+    border-bottom-color: .color[primary];
+  }
+}

@@ -7,6 +7,7 @@
 .border() {
   .weight() {
     default: 2px;
+    thicker: 3px;
   }
 }
 
@@ -25,6 +26,8 @@
   }
 
   .primary() {
+    light: lighten($default,50%);
+    mediumLight: lighten($default,25%);
     default: .color[primary];
     darker: #0D486D;
   }

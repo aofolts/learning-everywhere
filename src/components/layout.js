@@ -76,7 +76,7 @@ export function withLayout(Component) {
       layout: layoutData
     } = page
 
-    const layout = layoutData[0]
+    const layout = layout ? layoutData[0] : null
 
     const {
       seo
