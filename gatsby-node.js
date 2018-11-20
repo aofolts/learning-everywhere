@@ -1,53 +1,56 @@
-// const path = require('path')
+const path = require('path')
 
-// const templates = {
-//   page: path.resolve('./src/templates/page.js'),
-//   home: path.resolve('./src/templates/page-home.js')
-// }
+const templates = {
+  page: path.resolve('./src/templates/page.js'),
+  home: path.resolve('./src/templates/page-home.js')
+}
 
-// exports.createPages = ({graphql,actions}) => {
-//   const {
-//     createPage
-//   } = actions
+exports.createPages = ({graphql,actions}) => {
+  const {
+    createPage
+  } = actions
 
-//   const createPages = new Promise((resolve,reject) => {
-//     resolve(
-//       graphql(
-//         `
-//           {
-//             allContentfulPage {
-//               edges {
-//                 node {
-//                   slug
-//                 }
-//               }
-//             }
-//           }
-//         `
-//       ).then(result => {
-//         if (result.errors) {
-//           console.log(result.errors)
-//           reject(result.errors)
-//         }
+  const createPages = new Promise((resolve,reject) => {
+    resolve(
+      graphql(
+        `
+          {
+            pages: allContentfulPage {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+          }
+        `
+      ).then(({
+        errors,
+        data
+      }) => {
+        if (errors) {
+          console.log(errors)
+          reject(errors)
+        }
 
-//         const posts = result.data.allContentfulPage.edges
+        const pages = data.pages.edges.map(entry => entry.node)
         
-//         posts.forEach(post => {
-//           let slug = post.node.slug
+        pages.forEach(entry => {
+          let slug = entry.slug
 
-//           createPage({
-//             path: slug === `home` ? '/' : `/${slug}/`,
-//             component: templates[slug] || templates.page,
-//             context: {
-//               slug
-//             }
-//           })
-//         })
-//       })
-//     )
-//   })
+          createPage({
+            path: slug === `home` ? '/' : `/${slug}/`,
+            component: templates[slug] || templates.page,
+            context: {
+              slug
+            }
+          })
+        })
+      })
+    )
+  })
 
-//   return Promise.all([
-//     createPages
-//   ])
-// }
+  return Promise.all([
+    createPages
+  ])
+}

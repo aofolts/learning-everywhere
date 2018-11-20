@@ -4,7 +4,30 @@
 // FOOTER (ftr)
 ////////////////////////////////////////////////////////
 
-.wrap {
-  .wrap(@width: 100rem);
-  width: 200px;
+.bar {
+  background: .color.primary[darker];
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: .paragraph.secondary[font-size];
+  padding: .padding[extraSmall] .padding[small];
+}
+
+.social {
+  display: flex;
+  align-items: center;
+}
+
+.socialItem {
+  display: inline-flex;
+  align-items: center;
+
+  & +.socialItem {
+    margin-left: .padding[small];
+  }
+}
+
+.socialIcon {
+  height: 1em;
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-social-linkedin-white</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="linkedin-white" fill="#FFFFFF" fill-rule="nonzero">
+            <polygon id="Fill-36-Copy" points="3 149.71105 33.8629441 149.71105 33.8629441 50 3 50"></polygon>
+            <path d="M18.2506833,36.7981257 C28.3326825,36.7981257 36.5052714,28.5591566 36.5052714,18.3990629 C36.5052714,8.23896918 28.3326825,0 18.2506833,0 C8.17258887,0 0,8.23896918 0,18.3990629 C0,28.5591566 8.17258887,36.7981257 18.2506833,36.7981257" id="Fill-38-Copy"></path>
+            <path d="M83.6017181,97.4139007 C83.6017181,83.3920342 90.0562278,75.0437329 102.406872,75.0437329 C113.761812,75.0437329 119.212808,83.0562277 119.212808,97.4139007 L119.212808,149.752831 L149.927372,149.752831 L149.927372,86.6173372 C149.927372,59.9129246 134.792659,47 113.648575,47 C92.5044903,47 83.6017181,63.4740336 83.6017181,63.4740336 L83.6017181,50.0417805 L54,50.0417805 L54,149.752831 L83.6017181,149.752831 L83.6017181,97.4139007 Z" id="Fill-39-Copy"></path>
+        </g>
+    </g>
+</svg>

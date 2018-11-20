@@ -51,11 +51,11 @@ const CtaSection = ({
           </div>
           <div className={css.cta}>
             <h2>ECQ Courses</h2>
-            <Button label='View on Medium' link='/courses'/>
+            <Button label='View Courses' link='/courses'/>
           </div>
           <div className={css.cta}>
             <h2>Our Projects</h2>
-            <Button label='View on Medium' link='/projects'/>
+            <Button label='View Projects' link='/projects'/>
           </div>
         </div>
       </div>
@@ -96,22 +96,28 @@ export const query = graphql`
     page: contentfulPage(slug: {eq: "home"}) {
       ...pageFields
       layout {
-        heroHeadline
-        introCards {
-          id
-          headline
-          details {
-            details
-          }
-          image {
-            ...cardImage
-          }     
-        }
-        ...homeServices
+        ...homeLayoutFields
       }
     }
     medium: contentfulSocialAccount(platform: {eq: "Medium"}) {
       url
     }
+  }
+`
+
+export const homeLayoutFieldsFragment = graphql`
+  fragment homeLayoutFields on ContentfulLayoutPageHome {
+    heroHeadline
+    introCards {
+      id
+      headline
+      details {
+        details
+      }
+      image {
+        ...cardImage
+      }     
+    }
+    ...homeServices
   }
 `

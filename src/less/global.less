@@ -26,6 +26,7 @@
 
   .primary() {
     default: .color[primary];
+    darker: #0D486D;
   }
 }
 
@@ -102,6 +103,14 @@
 .wrapMedium {
   .wrap(
     @span: 10,
+    @padding: default,
+    @align: center
+  );
+}
+
+.wrapSmall {
+  .wrap(
+    @span: 8,
     @padding: default,
     @align: center
   );

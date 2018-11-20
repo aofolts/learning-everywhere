@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SvgIconRaisedHand = props => (
-  <svg {...props}>
+  <svg viewBox="0 0 150 150" {...props}>
     <g
       stroke="#35749C"
       strokeWidth={5}

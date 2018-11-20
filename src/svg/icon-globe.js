@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SvgIconGlobe = props => (
-  <svg {...props}>
+  <svg viewBox="0 0 150 150" {...props}>
     <g stroke="#35749C" strokeWidth={5} fill="none" fillRule="evenodd">
       <path
         d="M20.165 47.484C30.888 21.512 60.566 9.179 86.452 19.936c25.888 10.76 38.182 40.533 27.459 66.504-10.722 25.971-40.401 38.305-66.289 27.547C21.736 103.23 9.441 73.454 20.165 47.484z"
