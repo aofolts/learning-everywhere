@@ -38,11 +38,13 @@ const FooterBar = ({
 
   return (
     <section id='footerBar' className={css.bar}>
-      <div className={css.barCopyright}>
-        ©{new Date().getFullYear()} Learning Everywhere
-      </div>
-      <div className={css.bar}>
-        {socialItems}
+      <div className={css.barContent}>
+        <div className={css.barCopyright}>
+          ©{new Date().getFullYear()} Learning Everywhere
+        </div>
+        <div className={css.bar}>
+          {socialItems}
+        </div>
       </div>
     </section>
   )
