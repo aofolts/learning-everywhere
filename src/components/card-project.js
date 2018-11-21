@@ -1,64 +1,86 @@
 import {graphql} from 'gatsby'
-import React, {Component} from 'react'
-import css from '../less/card-accordian.module.less'
+import React from 'react'
+import css from '../less/card-project.module.less'
 import RichText from '../components/rich-text'
 
-class Card extends Component {
+const Card = ({
+  entry,
+  setExpandedProjectId,
+  state
+}) => {
+  const {
+    client
+  } = entry
 
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-      isExpanded: false
-    }
-  }
+  const description = entry.description.description
 
-  toggleExpanded = () => {
-    this.setState({
-      isExpanded: !this.state.isExpanded
-    })
-  }
-  
-  render() {
-    const {
-      entry
-    } = this.props
+  const nextYear = new Date().getFullYear() + 1
 
-    const {
-      client
-    } = entry
+  const isExpanded = entry.id === state.expandedProjectId
 
-    const description = entry.description.childMarkdownRemark.html
+  const Details = () => {
+    const detailsClasses = [
+      css.details,
+      isExpanded ? null : css.detailsAreHidden
+    ].join(' ')
 
-    const {
-      isExpanded
-    } = this.state
+    const dateRange = (() => {
+      const {
+        startMonth,
+        startYear,
+        endMonth,
+        endYear
+      } = entry
 
-    const Description = () => {
-      const classes = [
-        css.description,
-        isExpanded ? null : css.descriptionHidden
-      ].join(' ')
+      const end = endYear ? `${endMonth} ${endYear}` : 'Present'
 
-      console.log(css.descriptionHidden)
-
-      return (
-        <RichText html={description} className={classes}/>
-      )
-    }
+      return `${startMonth} ${startYear} - ${end}`
+    })()
 
     return (
-      <div className={css.card}>
-        <div className={css.header}>
-          <h3 className={css.title}>{client}</h3>
-          <div className={css.toggle} onClick={this.toggleExpanded}>
-            {isExpanded ? '-' : '+'}
-          </div>
-        </div>
-        <Description/>
+      <div className={detailsClasses}>
+        <div className={css.dateRange}>{dateRange}</div>
+        <RichText html={description} className={css.description}/>
       </div>
     )
   }
+
+  const handleClick = () => {
+    if (entry.id === state.expandedProjectId) {
+      setExpandedProjectId(null)
+    }
+    else {
+      setExpandedProjectId(entry.id)
+    }
+  }
+
+  const isVisible = 
+    state.yearRange.includes(entry.endYear) ||
+    (state.yearRange.includes(nextYear) && entry.endYear === 'null')
+
+    console.log(state.yearRange)
+    console.log(entry.endYear)
+    console.log(state.yearRange.includes(entry.endYear))
+    console.log(isVisible)
+
+  const cardClasses = [
+    css.card,
+    isVisible ? null : css.cardIsHidden
+  ].join(' ')
+
+  return (
+    <div className={cardClasses}>
+      <div className={css.header} onClick={handleClick}>
+        <h3 className={css.title}>{client}</h3>
+        <div className={css.toggle}>
+          <div className={css.toggleSymbol}>
+            {isExpanded ? '-' : '+'}
+          </div>
+        </div>
+      </div>
+      <Details/>
+    </div>
+  )
 }
 
 export default Card
@@ -69,11 +91,13 @@ export const cardProjectFragment = graphql`
     client
     subject
     startDate
+    startMonth: startDate(formatString: "MMMM")
+    startYear: startDate(formatString: "Y")
+    endMonth: endDate(formatString: "MMMM")
+    endYear: endDate(formatString: "Y")
     endDate
     description {
-      childMarkdownRemark {
-        html
-      }
+      description
     }
   }
 `

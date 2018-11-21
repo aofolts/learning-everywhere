@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Helmet} from 'react-helmet'
 import PropTypes from 'prop-types'
 import favicon from '../images/favicon.png'
-//import Header from './header'
+import Header from './header'
 import Footer from './footer'
 
 class Layout extends Component {
@@ -43,7 +43,7 @@ class Layout extends Component {
           <link rel='shortcut icon' type='image/png' href={favicon}/>
           <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet"></link>
         </Helmet>
-        {/* <Header/> */}
+        <Header/>
         {this.props.children}
         <Footer/>
       </div>
@@ -76,7 +76,7 @@ export function withLayout(Component) {
       layout: layoutData
     } = page
 
-    const layout = layout ? layoutData[0] : null
+    const layout = layoutData ? layoutData[0] : null
 
     const {
       seo

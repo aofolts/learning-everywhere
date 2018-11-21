@@ -14,16 +14,24 @@ class Awards extends Component {
 
   componentDidMount() {
     setInterval(() => {
-      const currentId = this.state.activeAwardId
-      const awards = this.props.awards
-      const currentAwardIndex = awards.findIndex(item => item.id === currentId)
-      const nextAward = awards[currentAwardIndex + 1] 
-      const activeAwardId = nextAward ? nextAward.id : awards[0].id
-
-      this.setState({
-        activeAwardId
-      })
+      this.advance() 
     },2500)
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.advance)
+  }
+
+  advance = () => {
+    const currentId = this.state.activeAwardId
+    const awards = this.props.awards
+    const currentAwardIndex = awards.findIndex(item => item.id === currentId)
+    const nextAward = awards[currentAwardIndex + 1] 
+    const activeAwardId = nextAward ? nextAward.id : awards[0].id
+
+    this.setState({
+      activeAwardId
+    })
   }
 
   render() {

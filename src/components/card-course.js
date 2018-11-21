@@ -1,67 +1,53 @@
 import {graphql} from 'gatsby'
-import React, {Component} from 'react'
-import css from '../less/card-accordian.module.less'
+import React from 'react'
+import css from '../less/card-course.module.less'
 import RichText from '../components/rich-text'
 
-class Card extends Component {
-
-  constructor(props) {
-    super(props)
+const CourseCard = ({
+  state,
+  setExpandedCardId,
+  entry
+}) => {
+  const description = entry.description.childMarkdownRemark.html
   
-    this.state = {
-      isExpanded: false
-    }
-  }
+  const isExpanded = entry.id === state.expandedCardId
 
-  toggleExpanded = () => {
-    this.setState({
-      isExpanded: !this.state.isExpanded
-    })
-  }
-  
-  render() {
-    const {
-      entry
-    } = this.props
-
-    const {
-      title
-    } = entry
-
-    const description = entry.description.childMarkdownRemark.html
-
-    const {
-      isExpanded
-    } = this.state
-
-    const Description = () => {
-      const classes = [
-        css.description,
-        isExpanded ? null : css.descriptionHidden
-      ].join(' ')
-
-      console.log(css.descriptionHidden)
-
-      return (
-        <RichText html={description} className={classes}/>
-      )
-    }
+  const Details = () => {
+    const classes = [
+      css.details,
+      isExpanded ? null : css.detailsAreHidden
+    ].join(' ')
 
     return (
-      <div className={css.card}>
-        <div className={css.header}>
-          <h3 className={css.title}>{title}</h3>
-          <div className={css.toggle} onClick={this.toggleExpanded}>
-            {isExpanded ? '-' : '+'}
-          </div>
-        </div>
-        <Description/>
+      <div className={classes}>
+        <RichText html={description} className={css.description}/>
       </div>
     )
   }
+
+  const handleClick = () => {
+    if (entry.id === state.expandedCardId) {
+      setExpandedCardId(null)
+    }
+    else {
+      setExpandedCardId(entry.id)
+    }
+  }
+
+  return (
+    <div className={css.card}>
+      <div className={css.header} onClick={handleClick}>
+        <h3 className={css.title}>{entry.title}</h3>
+        <div className={css.toggle}>
+          {isExpanded ? '-' : '+'}
+        </div>
+      </div>
+      <Details/>
+    </div>
+  )
 }
 
-export default Card
+export default CourseCard
 
 export const cardCourseFragment = graphql`
   fragment cardCourse on ContentfulCourse {

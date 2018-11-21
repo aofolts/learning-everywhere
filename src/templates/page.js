@@ -2,7 +2,7 @@ import React,{Fragment} from 'react'
 import {graphql} from 'gatsby'
 import { withLayout } from '../components/layout'
 import Hero from '../components/hero-secondary'
-import css from '../less/page.module.less'
+//import css from '../less/page.module.less'
 import RichText from '../components/rich-text'
 
 const ContentSection = ({

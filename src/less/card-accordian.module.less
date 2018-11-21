@@ -2,20 +2,27 @@
 
 .card {
   background: .color.grey[offLight];
+  font-size: .paragraph.secondary[font-size];
 
   &+ .card {
-    margin-top: .padding[medium];
+    margin-top: .padding[mediumSmall];
   }
+}
+
+.cardIsHidden {
+  display: none;
+}
+
+.cardVisible {
+  display: block;
 }
 
 @headerHeight: .padding[mediumLarge];
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background: .color.primary[light];
   color: white;
+  font-size: .paragraph.secondary[font-size];
 }
 
 .toggle {
@@ -25,31 +32,38 @@
   text-align: center;
   line-height: @headerHeight;
   cursor: pointer;
-  flex-shrink: 0;
-  margin-left: var(--paddingHorizontal);
-
-  @media .query.phone[default] {
-    background: none;
-  }
+  margin-left: .padding[small];
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
   margin-bottom: 0;
-  margin-left: var(--paddingHorizontal);
-  .paragraph;
-  .paragraph.bold;
-  color: white;
+  padding: .padding[small];
+  width: calc(100% ~'-' @headerHeight - (.padding[small] * 2));
+  font-weight: .paragraph.bold[font-weight];
+  font-size: inherit;
+  color: fade(white,90%);
   margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
 
-  @media .query.phone[default] {
-    padding: var(--paddingHorizontal) 0;
-  }
+.details {
+  padding: .padding[small];
+}
+
+.detailsAreHidden {
+  display: none;
 }
 
 .description {
-  padding: var(--paddingHorizontal);
-}
-
-.descriptionHidden {
-  display: none;
+  p {
+    font-size: inherit;
+  }
 }
