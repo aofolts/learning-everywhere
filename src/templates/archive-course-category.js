@@ -5,14 +5,22 @@ import Hero from '../components/hero-secondary'
 import css from '../less/archive-course-category.module.less'
 import IntroSection from '../components/course-categories'
 import RichText from '../components/rich-text'
+import CourseCard from '../components/card-course'
 
-const ContentSection = ({
-  content
+const CoursesSection = ({
+  data
 }) => {
+
+  const cards = data.courses.map(entry => {
+    return <CourseCard key={entry.id} entry={entry}/>
+  })
+
   return (
     <section id='content' className={css.coursesSection}>
-      <div className='wrapSmall'>
-        <h1>hey</h1>
+      <div className='wrapMedium'>
+        <div className={css.courses}>
+          {cards}
+        </div>
       </div>
     </section>    
   )
@@ -26,14 +34,11 @@ const CourseCategoryArchive = ({
     page
   } = data
 
-  const categories = data.categories.edges.map(entry => entry.node)
-  const description = page.description.description
-
   return (
     <Fragment>
       <Hero title={page.title}/>
       <IntroSection/>
-      <ContentSection/>
+      <CoursesSection data={{courses: page.courses}}/>
     </Fragment>    
   )
 }
@@ -44,6 +49,9 @@ export const query = graphql`
   query courseCategoryBySlug($slug: String!) {
     page: contentfulCourseCategory(slug: {eq: $slug}) {
       ...courseCategoryFields
+      courses {
+        ...cardCourse
+      }
     }
   }
 `

@@ -1,0 +1,55 @@
+@import (reference) 'global.less';
+
+.card {
+  background: .color.grey[offLight];
+
+  &+ .card {
+    margin-top: .padding[medium];
+  }
+}
+
+@headerHeight: .padding[mediumLarge];
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: .color.primary[light];
+  color: white;
+}
+
+.toggle {
+  width: @headerHeight;
+  background: .color[primary];
+  font-size: .heading.secondary[font-size];
+  text-align: center;
+  line-height: @headerHeight;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: var(--paddingHorizontal);
+
+  @media .query.phone[default] {
+    background: none;
+  }
+}
+
+.title {
+  margin-bottom: 0;
+  margin-left: var(--paddingHorizontal);
+  .paragraph;
+  .paragraph.bold;
+  color: white;
+  margin-bottom: 0;
+
+  @media .query.phone[default] {
+    padding: var(--paddingHorizontal) 0;
+  }
+}
+
+.description {
+  padding: var(--paddingHorizontal);
+}
+
+.descriptionHidden {
+  display: none;
+}
