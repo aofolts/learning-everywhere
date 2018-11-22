@@ -5,14 +5,62 @@
 }
 
 .nav {
-  height: .nav[height];
-  padding: 0 var(--paddingHorizontal);
+  height: var(--navHeight);
+  padding: 0 var(--paddingHorizontal); 
+  display: flex;
+  align-items: center;
+  transition: height .5s .ease[cubic],background .5s .ease[cubic];
+
+  @media .query.phone[default] {
+    --navHeight: 8rem;
+  }
+
+  --color: white;
+  --navHeight: .padding[large];
 }
 
 .navIsDocked {
-  background: grey;
+  background: none;
+
+  @media .query.phone[above] {
+    .brandName {
+      opacity: 0;
+    }
+  }
 }
 
 .navIsUndocked {
-  background: yellow;
+  background: white;
+
+  --color: .paragraph[color];
+
+  @media .query.phone[above] {
+    .brandLogo {
+      top: calc((.nav[height] * -1.5) ~'-' (.padding[extraSmall] * 2));
+    }
+  
+    .brandName {
+      opacity: 1;
+    }
+  }
+}
+
+.brandLogo {
+  background: white;
+  padding: .padding[extraSmall];
+  height: calc(var(--navHeight) ~'*' 1.5);
+  position: absolute;
+  top: 0;
+  left: var(--paddingHorizontal);
+  position: fixed;
+  transition: top .5s .ease[cubic];
+
+  @media .query.phone[default] {
+    display: none;
+  }
+}
+
+.brandName {
+  color: var(--color);
+  font-weight: .paragraph.bold[font-weight];
 }

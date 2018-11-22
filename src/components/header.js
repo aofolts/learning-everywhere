@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import css from '../less/header.module.less'
 import Nav from '../components/nav'
+import {throttle} from 'lodash'
 
 export const HeaderContext = React.createContext()
 
@@ -19,18 +20,20 @@ class Header extends Component {
     this.state = {
       isDocked: true
     }  
+
+    this.throttledCheckDocking = throttle(this.checkDocking,100)
   }
 
   componentDidMount() {
-    window.addEventListener('scroll',this.checkDocking)
+    window.addEventListener('scroll',this.throttledCheckDocking)
   }
 
   componentWillUnmount () {
-    window.removeEventListener('scroll',this.checkDocking)
+    window.removeEventListener('scroll',this.throttledCheckDocking)
   }
 
   checkDocking = () => {
-    const isDocked = window.pageYOffset > 0 
+    const isDocked = window.pageYOffset === 0 
 
     if (isDocked !== this.state.isDocked) {
       this.setState({
