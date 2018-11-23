@@ -20,7 +20,7 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-helmet": "^5.2.0",
-    "yetti": "^1.1.11"
+    "yetti": "^1.2.0"
   },
   "keywords": [
     "gatsby"
