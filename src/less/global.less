@@ -32,9 +32,12 @@
     lightest: lighten($default,50%);
     lighter: lighten($default,25%);
     light: lighten($default,10%);
+    lighten: lighten($default,5%);
     default: .color[primary];
-    dark: #0D486D;
-    darker: #0D486D;
+    darken: #0D486D;
+    darker: darken(#0D486D,5%);
+    dark: darken(#0D486D,10%);
+    darkest: darken(#0D486D,15%);
   }
 }
 

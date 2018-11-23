@@ -7,6 +7,13 @@
   @media .query.laptop[above] {
     margin-left: .padding[medium];
   }
+
+  @media .query.desktop[below] {
+    height: .padding[mediumLarge];
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .item {
@@ -23,8 +30,12 @@
 
 .icon {
   height: .paragraph.secondary[font-size];
-  
+
   path {
     fill: var(--color);
+
+    @media .query.desktop[below] {
+      fill: .color.primary[darker];
+    }
   }
 }

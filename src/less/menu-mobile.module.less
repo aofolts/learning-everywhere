@@ -2,4 +2,40 @@
 
 .menuMobile {
   display: flex;
+
+  --menuMobileWidth: 35rem;
+
+  @media .query.desktop[below] {
+    position: fixed;
+    top: 0;
+    //right: calc(var(--menuMobileWidth) ~'*' -1);
+    background: .color[primary];
+    right: 0;
+    height: 100%;
+    width: var(--menuMobileWidth);
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+}
+
+.header {
+  @media .query.desktop[below] {
+    height: .padding[mediumLarge];
+    width: 100%;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 .padding[mediumSmall];
+  }
+}
+
+.toggle {
+  @media .query.desktop[below] {
+    width: .padding[small];
+    height: .padding[small];
+    background: grey;
+    display: inline-block;
+  }
 }

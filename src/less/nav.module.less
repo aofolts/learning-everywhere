@@ -34,8 +34,6 @@
   background: white;
   box-shadow: 0 5px 5px 0 rgba(0,0,0,.1);
 
-  --color: .paragraph[color];
-
   @media .query.phone[above] {
     --navMainHeight: 8rem;
 
@@ -46,6 +44,10 @@
     .brandName {
       opacity: 1;
     }
+  }
+
+  @media .query.phone[default] {
+    --color: .paragraph[color];
   }
 }
 

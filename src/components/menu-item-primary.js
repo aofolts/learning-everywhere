@@ -1,4 +1,4 @@
-import React,{Fragment} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {graphql} from 'gatsby'
 import css from '../less/menu-item-primary.module.less'
@@ -16,12 +16,9 @@ const SubMenu = ({
   })
 
   return (
-    <Fragment>
-      <div className={css.subMenuToggle}></div>
-      <ul className={css.subMenu}>
-        {items}
-      </ul>
-    </Fragment>
+    <ul className={css.subMenu}>
+      {items}
+    </ul>
   )
 }
 
@@ -30,7 +27,10 @@ const PrimaryMenuItem = ({
 }) => {
   return (
     <li key={entry.id} className={css.item}>
-      <Link className={css.title} {...entry}>{entry.title}</Link>
+      <header className={css.header}>
+        <Link className={css.title} {...entry}>{entry.title}</Link>
+        <div className={css.subMenuToggle}></div>
+      </header>
       <SubMenu entries={entry.subMenuItems}/>
     </li>
   )
