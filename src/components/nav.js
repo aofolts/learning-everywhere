@@ -4,13 +4,14 @@ import {withHeaderContext} from './header';
 import logoSrc from '../images/logo.png'
 import MobileMenu from '../components/menu-mobile'
 import {Link} from 'gatsby'
+import Toggle from '../components/menu-mobile-toggle'
 
 const Brand = ({
-  isDocked
+  headerIsDocked
 }) => {
   const brandClasses = [
     css.brand,
-    isDocked ? css.brandIsDocked : css.brandIsUndocked
+    headerIsDocked ? css.brandheaderIsDocked : css.brandIsUndocked
   ].join(' ')
 
   return (
@@ -25,18 +26,19 @@ const Nav = ({
   headerContext
 }) => {
   const {
-    isDocked
+    headerIsDocked
   } = headerContext
 
   const navClasses = [
     css.nav,
-    isDocked ? css.navIsDocked : css.navIsUndocked
+    headerIsDocked ? css.navheaderIsDocked : css.navIsUndocked
   ].join(' ')
 
   return (
     <nav id='navMain' className={navClasses}>
-      <Brand {...{isDocked}}/>
+      <Brand {...{headerIsDocked}}/>
       <MobileMenu/>
+      <Toggle/>
     </nav>
   )
 }

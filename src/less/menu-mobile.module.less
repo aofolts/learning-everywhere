@@ -8,15 +8,20 @@
   @media .query.desktop[below] {
     position: fixed;
     top: 0;
-    //right: calc(var(--menuMobileWidth) ~'*' -1);
+    right: calc(var(--menuMobileWidth) ~'*' -1);
     background: .color[primary];
-    right: 0;
     height: 100%;
     width: var(--menuMobileWidth);
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+    transition: right .2s .ease[cubic];
+    z-index: 1001;
   }
+}
+
+.menuMobileIsOpen {
+  right: 0;
 }
 
 .header {
@@ -32,10 +37,54 @@
 }
 
 .toggle {
+  @media .query.laptop[above] {
+    display: none;
+  }
+
   @media .query.desktop[below] {
-    width: .padding[small];
+    width: .padding[small] * 1.25;
     height: .padding[small];
-    background: grey;
     display: inline-block;
   }
+}
+
+.toggleIsOpen {
+  .toggleBarTop {
+    top: 50%;
+    transform: translate(-50%,-50%) rotate(-45deg);
+  }
+
+  .toggleBarMiddle {
+    width: 0;
+  }
+
+  .toggleBarBottom {
+    top: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+}
+
+.toggleBar() {
+  position: absolute;
+  transform: translate(-50%,-50%);
+  height: .border.weight[default];
+  left: 50%;
+  background: white;
+  width: 100%;
+  transition: all .2s .ease[cubic];
+}
+
+.toggleBarTop {
+  .toggleBar;
+  top: 0;
+}
+
+.toggleBarMiddle {
+  .toggleBar;
+  top: 50%;
+}
+
+.toggleBarBottom {
+  .toggleBar;
+  bottom: 0;
 }

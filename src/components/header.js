@@ -30,7 +30,8 @@ class Header extends Component {
     } = props
   
     this.state = {
-      isDocked: true
+      headerIsDocked: true,
+      menuMobileIsOpen: false
     }
 
     this.throttledCheckDocking = throttle(this.checkDocking,100)
@@ -45,24 +46,31 @@ class Header extends Component {
   }
 
   checkDocking = () => {
-    const isDocked = window.pageYOffset === 0 
+    const headerIsDocked = window.pageYOffset === 0 
 
-    if (isDocked !== this.state.isDocked) {
+    if (headerIsDocked !== this.state.headerIsDocked) {
       this.setState({
-        isDocked
+        headerIsDocked
       })
     }
+  }
+
+  toggleMenuMobile = () => {
+    this.setState({
+      menuMobileIsOpen: !this.state.menuMobileIsOpen
+    })
   }
 
   render() {
     const {
       state,
-      props
+      props,
+      toggleMenuMobile
     } = this
 
     const headerClasses = [
       css.header,
-      state.isDocked ? css.headerIsDocked : css.headerIsUndocked
+      state.headerIsDocked ? css.headerIsDocked : css.headerIsUndocked
     ].join(' ')
 
     const {
@@ -86,6 +94,7 @@ class Header extends Component {
 
     const context = {
       ...this.state,
+      toggleMenuMobile,
       data: {
         menuItems,
         socialAccounts

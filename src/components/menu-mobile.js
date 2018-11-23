@@ -2,17 +2,15 @@ import React from 'react'
 import MainMenu from './menu-main'
 import Social from '../components/nav-main-social'
 import css from '../less/menu-mobile.module.less'
+import { withHeaderContext } from './header'
+import Toggle from '../components/menu-mobile-toggle'
 
 const Header = ({
   headerContext
 }) => {
   return (
     <div id='menuMobileHeader' className={css.header}>
-      <div id='menuMobileToggle' className={css.toggle}>
-        <div className={css.toggleTopBar}/>
-        <div className={css.toggleMiddleBar}/>
-        <div className={css.toggleBottomBar}/>
-      </div>
+      <Toggle {...{headerContext}}/>
     </div>
   )
 }
@@ -20,8 +18,17 @@ const Header = ({
 const MobileMenu = ({
   headerContext
 }) => {
+  const {
+    menuMobileIsOpen
+  } = headerContext
+
+  const menuMobileClasses = [
+    css.menuMobile,
+    menuMobileIsOpen ? css.menuMobileIsOpen : css.menuMobileIsClosed
+  ].join(' ')
+
   return (
-    <div id='menuMobile' className={css.menuMobile}>
+    <div id='menuMobile' className={menuMobileClasses}>
       <Header headerContext={headerContext}/>
       <MainMenu/>
       <Social/>
@@ -29,4 +36,4 @@ const MobileMenu = ({
   )
 }
 
-export default MobileMenu
+export default withHeaderContext(MobileMenu)
