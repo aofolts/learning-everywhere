@@ -1,0 +1,32 @@
+@import (reference) 'global.less';
+@import (reference) 'buttons.module.less';
+
+.form {
+  font-size: .paragraph[font-size];
+}
+
+.field {
+  &+.field {
+    margin-top: .padding[small];
+  }
+}
+
+.input,.textarea {
+  border: none;
+  border-bottom: .border.weight[default] solid .color[black];
+  background: none;
+  width: 100%;
+  font-size: .paragraph[font-size];
+  color: .paragraph[color];
+  font-weight: .paragraph[font-weight];
+  line-height: 3em;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.submit {
+  margin-top: .padding[medium];
+  .button.primary;
+}

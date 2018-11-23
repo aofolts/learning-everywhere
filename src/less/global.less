@@ -46,6 +46,20 @@
 ////////////////////////////////////////////////////////
 
 .grid() {
+  .halves() {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    grid-gap: var(--paddingHorizontal);
+    
+    @supports not (display: grid) {
+      display: flex;
+
+      @media .query.phone[default] {
+        display: block;
+      }
+    }
+  }
+
   .thirds() {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));

@@ -20,13 +20,13 @@ class HeroBar extends Component {
     } = this.props
 
     const {
-      settings
+      location
     } = data
   
     const {
       phone,
       fax
-    } = settings
+    } = location
   
     return (
       <div className={css.bar}>
@@ -51,7 +51,7 @@ export default props => (
   <StaticQuery
     query={graphql`
       {
-        settings: contentfulSettings(name: {eq: "Settings"}) {
+        location: contentfulLocation(name: {eq: "Learning Everywhere"}) {
           phone
           fax
         }

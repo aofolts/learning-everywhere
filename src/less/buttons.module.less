@@ -5,7 +5,14 @@
   border: solid;
   border-width: .border.weight[default];
   font-weight: .paragraph[font-weight];
-  padding: .8em 1.5em;
+  padding: .5em 1.5em;
+
+  .primary() {
+    .button;
+    border-color: .color[primary];
+    background: .color[primary];
+    color: white;
+  }
 }
 
 .buttonSecondaryLight {
@@ -15,8 +22,5 @@
 }
 
 .buttonPrimary {
-  .button;
-  border-color: .color[primary];
-  background: .color[primary];
-  color: white;
+  .button.primary;
 }

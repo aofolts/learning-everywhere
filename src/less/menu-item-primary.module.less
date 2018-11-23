@@ -23,15 +23,26 @@
   @media .query.desktop[below] {
     color: white;
     width: var(--menuMobileWidth);
-    padding: 0 .padding[mediumSmall];
   }
 }
 
 .header {
+  cursor: pointer;
+
+  @media .query.desktop[default] {
+    display: flex;
+    align-items: center;
+  }
+
   @media .query.desktop[below] {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 .padding[mediumSmall];
+
+    &:hover {
+      background: .color.primary[lighten];
+    }
   }
 }
 
@@ -53,10 +64,6 @@
   @media .query.desktop[below] {
     font-size: .heading.tertiary[font-size];
     padding: .5em 0;
-
-    &:hover {
-      background: .color.primary[lighten];
-    }
   }
 }
 

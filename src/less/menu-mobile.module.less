@@ -10,18 +10,21 @@
     top: 0;
     right: calc(var(--menuMobileWidth) ~'*' -1);
     background: .color[primary];
-    height: 100%;
+    height: 100vh;
     width: var(--menuMobileWidth);
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     transition: right .2s .ease[cubic];
     z-index: 1001;
+
+    --color: white;
   }
 }
 
 .menuMobileIsOpen {
   right: 0;
+  box-shadow: 0 .padding[extraSmall] .padding[extraSmall] 0 rgba(0,0,0,.1);
 }
 
 .header {
@@ -37,6 +40,8 @@
 }
 
 .toggle {
+  cursor: pointer;
+
   @media .query.laptop[above] {
     display: none;
   }
@@ -69,7 +74,7 @@
   transform: translate(-50%,-50%);
   height: .border.weight[default];
   left: 50%;
-  background: white;
+  background: var(--color);
   width: 100%;
   transition: all .2s .ease[cubic];
 }

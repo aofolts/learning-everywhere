@@ -5,7 +5,8 @@ const templates = {
   home: path.resolve('./src/templates/page-home.js'),
   courseCategory: path.resolve('./src/templates/archive-course-category.js'),
   courses: path.resolve('./src/templates/page-courses.js'),
-  projects: path.resolve('./src/templates/page-projects.js')
+  projects: path.resolve('./src/templates/page-projects.js'),
+  contact: path.resolve('./src/templates/page-contact.js')
 }
 
 exports.createPages = ({graphql,actions}) => {

@@ -23,7 +23,7 @@
 .navIsDocked {
   background: none;
 
-  @media .query.phone[above] {
+  @media .query.laptop[above] {
     .brandName {
       opacity: 0;
     }
@@ -33,10 +33,13 @@
 .navIsUndocked {
   background: white;
   box-shadow: 0 5px 5px 0 rgba(0,0,0,.1);
+  --color: .paragraph[color];
 
   @media .query.phone[above] {
     --navMainHeight: 8rem;
+  }
 
+  @media .query.laptop[above] {
     .brandLogo {
       top: calc((.brandLogo[height] * -1.5) ~'-' (.padding[extraSmall] * 2));
     }
@@ -44,10 +47,6 @@
     .brandName {
       opacity: 1;
     }
-  }
-
-  @media .query.phone[default] {
-    --color: .paragraph[color];
   }
 }
 
@@ -61,7 +60,7 @@
   position: fixed;
   transition: top .5s .ease[cubic];
 
-  @media .query.phone[default] {
+  @media .query.desktop[below] {
     display: none;
   }
 }

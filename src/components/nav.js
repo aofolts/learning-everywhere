@@ -31,7 +31,7 @@ const Nav = ({
 
   const navClasses = [
     css.nav,
-    headerIsDocked ? css.navheaderIsDocked : css.navIsUndocked
+    headerIsDocked ? css.navIsDocked : css.navIsUndocked
   ].join(' ')
 
   return (
