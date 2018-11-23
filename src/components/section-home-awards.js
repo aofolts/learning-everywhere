@@ -13,11 +13,11 @@ class Awards extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.advance,2500)
+    this.advanceInterval = setInterval(this.advance,2500)
   }
 
   componentWillUnmount () {
-    clearInterval(this.advance)
+    clearInterval(this.advanceInterval) 
   }
 
   advance = () => {

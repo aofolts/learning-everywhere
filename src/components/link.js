@@ -7,6 +7,7 @@ const getFullSlug = (type,slug) => {
 
   switch (type) {
     case 'ContentfulCourseCategory': base = 'courses'; break;
+    default: base = '';
   }
 
   return `${base}/${slug}`

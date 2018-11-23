@@ -24,12 +24,9 @@ export default props => (
 class Header extends Component {
   constructor(props) {
     super(props)
-
-    const {
-      data
-    } = props
   
     this.state = {
+      expandedMenuItemId: null,
       headerIsDocked: true,
       menuMobileIsOpen: false
     }
@@ -55,6 +52,18 @@ class Header extends Component {
     }
   }
 
+  setExpandedMenuItemId = id => {
+    console.log(id + ' ' + this.state.expandedMenuItemId)
+
+    if (id === this.state.expandedMenuItemId) {
+      id = null
+    }
+
+    this.setState({
+      expandedMenuItemId: id
+    })
+  }
+
   toggleMenuMobile = () => {
     this.setState({
       menuMobileIsOpen: !this.state.menuMobileIsOpen
@@ -65,7 +74,8 @@ class Header extends Component {
     const {
       state,
       props,
-      toggleMenuMobile
+      toggleMenuMobile,
+      setExpandedMenuItemId
     } = this
 
     const headerClasses = [
@@ -95,6 +105,7 @@ class Header extends Component {
     const context = {
       ...this.state,
       toggleMenuMobile,
+      setExpandedMenuItemId,
       data: {
         menuItems,
         socialAccounts

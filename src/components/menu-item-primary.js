@@ -22,14 +22,52 @@ const SubMenu = ({
   )
 }
 
-const PrimaryMenuItem = ({
-  entry
+const Toggle = ({
+  entry,
+  headerContext
 }) => {
+  if (!entry.subMenuItems) return null
+
+  const {
+    setExpandedMenuItemId
+  } = headerContext
+
+  const handleClick = () => {
+    if (entry.page || entry.url) {
+      setExpandedMenuItemId(entry.id)
+    }
+  }
+
+  return entry.subMenuItems ? (
+    <div className={css.subMenuToggle} onClick={handleClick}/>
+  ) : null
+}
+
+const PrimaryMenuItem = ({
+  entry,
+  headerContext
+}) => {
+  const {
+    expandedMenuItemId,
+    setExpandedMenuItemId
+  } = headerContext
+
+  const handleHeaderClick = () => {
+    if (!entry.page && !entry.url) {
+      setExpandedMenuItemId(entry.id)
+    }
+  }
+
+  const itemClasses = [
+    css.item,
+    expandedMenuItemId === entry.id ? css.itemIsExpanded : null
+  ].join(' ')
+
   return (
-    <li key={entry.id} className={css.item}>
-      <header className={css.header}>
+    <li key={entry.id} className={itemClasses}>
+      <header className={css.header} onClick={handleHeaderClick}>
         <Link className={css.title} {...entry}>{entry.title}</Link>
-        <div className={css.subMenuToggle}></div>
+        <Toggle headerContext={headerContext} entry={entry}/>
       </header>
       <SubMenu entries={entry.subMenuItems}/>
     </li>

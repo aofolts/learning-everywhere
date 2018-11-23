@@ -35,6 +35,14 @@
   }
 }
 
+.itemIsExpanded {
+  @media .query.desktop[below] {
+    .subMenu {
+      display: block;
+    }
+  }
+}
+
 .title {
   display: block;
 
@@ -77,9 +85,12 @@
   }
 
   @media .query.desktop[below] {
-    width: .padding[small];
-    height: .padding[small];
-    background: black;
+    color: white;
+    font-size: .heading.tertiary[font-size];
     margin-left: .padding[small];
+
+    &:after {
+      content: '+';
+    }
   }
 }
