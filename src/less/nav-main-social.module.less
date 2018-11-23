@@ -1,0 +1,30 @@
+@import (reference) 'global.less';
+
+.social {
+  display: flex;
+  align-items: center;
+
+  @media .query.laptop[above] {
+    margin-left: .padding[medium];
+  }
+}
+
+.item {
+  display: inline-block;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  & + .item {
+    margin-left: .padding[extraSmall];
+  }
+}
+
+.icon {
+  height: .paragraph.secondary[font-size];
+  
+  path {
+    fill: var(--color);
+  }
+}

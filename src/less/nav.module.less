@@ -5,18 +5,19 @@
 }
 
 .nav {
-  height: var(--navHeight);
+  height: var(--navMainHeight);
   padding: 0 var(--paddingHorizontal); 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   transition: height .5s .ease[cubic],background .5s .ease[cubic];
 
   @media .query.phone[default] {
-    --navHeight: 8rem;
+    --navMainHeight: 8rem;
   }
 
   --color: white;
-  --navHeight: .padding[large];
+  --navMainHeight: .padding[large];
 }
 
 .navIsDocked {
@@ -31,12 +32,15 @@
 
 .navIsUndocked {
   background: white;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,.1);
 
   --color: .paragraph[color];
 
   @media .query.phone[above] {
+    --navMainHeight: 8rem;
+
     .brandLogo {
-      top: calc((.nav[height] * -1.5) ~'-' (.padding[extraSmall] * 2));
+      top: calc((.brandLogo[height] * -1.5) ~'-' (.padding[extraSmall] * 2));
     }
   
     .brandName {
@@ -45,10 +49,10 @@
   }
 }
 
-.brandLogo {
+.brandLogo() {
   background: white;
   padding: .padding[extraSmall];
-  height: calc(var(--navHeight) ~'*' 1.5);
+  height: 15rem;
   position: absolute;
   top: 0;
   left: var(--paddingHorizontal);
@@ -58,6 +62,10 @@
   @media .query.phone[default] {
     display: none;
   }
+}
+
+.brandLogo {
+  .brandLogo;
 }
 
 .brandName {

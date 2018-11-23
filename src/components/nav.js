@@ -2,6 +2,8 @@ import React from 'react'
 import css from '../less/nav.module.less'
 import {withHeaderContext} from './header';
 import logoSrc from '../images/logo.png'
+import MobileMenu from '../components/menu-mobile'
+import {Link} from 'gatsby'
 
 const Brand = ({
   isDocked
@@ -12,10 +14,10 @@ const Brand = ({
   ].join(' ')
 
   return (
-    <div className={brandClasses}>
+    <Link className={brandClasses} to='/'>
       <div className={css.brandName}>Learning Everywhere</div>
       <img src={logoSrc} className={css.brandLogo} alt='logo'/>
-    </div>
+    </Link>
   )
 }
 
@@ -34,6 +36,7 @@ const Nav = ({
   return (
     <nav id='navMain' className={navClasses}>
       <Brand {...{isDocked}}/>
+      <MobileMenu/>
     </nav>
   )
 }

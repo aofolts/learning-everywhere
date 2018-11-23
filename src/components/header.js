@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {StaticQuery,graphql} from 'gatsby'
 import css from '../less/header.module.less'
 import Nav from '../components/nav'
 import {throttle} from 'lodash'
@@ -13,13 +14,24 @@ export function withHeaderContext(Component) {
   )
 }
 
+export default props => (
+  <StaticQuery
+    query={query}
+    render={data => <Header data={data} {...props}/>}
+  />
+)
+
 class Header extends Component {
   constructor(props) {
     super(props)
+
+    const {
+      data
+    } = props
   
     this.state = {
       isDocked: true
-    }  
+    }
 
     this.throttledCheckDocking = throttle(this.checkDocking,100)
   }
@@ -45,7 +57,7 @@ class Header extends Component {
   render() {
     const {
       state,
-      context
+      props
     } = this
 
     const headerClasses = [
@@ -53,8 +65,35 @@ class Header extends Component {
       state.isDocked ? css.headerIsDocked : css.headerIsUndocked
     ].join(' ')
 
+    const {
+      socialAccounts
+    } = props.data.settings
+
+    const menuItems = props.data.settings.menuItems.map(entry => {
+      const subMenuItems = !entry.subMenuItems ? null : entry.subMenuItems.map(entry => {
+        return {
+          ...entry,
+          page: entry.page ? entry.page[0] : null
+        }
+      })
+
+      return {
+        ...entry,
+        page: entry.page ? entry.page[0] : null,
+        subMenuItems
+      }
+    })
+
+    const context = {
+      ...this.state,
+      data: {
+        menuItems,
+        socialAccounts
+      }
+    }
+
     return (
-      <HeaderContext.Provider value={{...this.state}}>
+      <HeaderContext.Provider value={context}>
         <header id='header' className={headerClasses}>
           <Nav/>
         </header>
@@ -62,4 +101,16 @@ class Header extends Component {
     )
   }
 }
-export default Header
+
+export const query = graphql`
+  {
+    settings: contentfulSettings(name: {eq: "Settings"}) {
+      menuItems {
+        ...primaryMenuItem
+      }
+      socialAccounts {
+        ...socialAccount
+      }
+    }
+  }
+`

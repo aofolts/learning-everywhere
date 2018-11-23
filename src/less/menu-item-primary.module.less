@@ -1,0 +1,52 @@
+@import (reference) 'global.less';
+
+.item {
+  color: var(--color);
+
+  @media .query.laptop[above] {
+    display: inline-block;
+    font-size: .paragraph.secondary[font-size];
+    height: var(--navMainHeight);
+    display: inline-flex;
+    align-items: center;
+
+    & + .item {
+      margin-left: .padding[mediumSmall];
+    }
+  }
+
+  &:hover {
+    .subMenu {
+      display: block;
+    }
+  }
+}
+
+.subMenuToggle {
+  @media .query.laptop[above] {
+    width: 5px;
+    height: 5px;
+    border-radius: 1000px;
+    background: var(--color);
+    margin-left: .5em;
+  }
+}
+
+.title {
+  font-size: .paragraph.secondary[font-size];
+}
+
+.subMenu {
+  display: none;
+
+  @media .query.laptop[above] {
+    position: absolute;
+    top: 100%;
+    background: .color[primary];
+    padding: .padding[smallest] 0;
+    min-width: 25rem;
+    box-shadow: 0 0 .padding[extraSmall] 0 rgba(0,0,0,.1);
+    transform: translateX(-50%);
+    left: 50%;
+  }
+}

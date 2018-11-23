@@ -58,11 +58,6 @@ const Card = ({
     state.yearRange.includes(entry.endYear) ||
     (state.yearRange.includes(nextYear) && entry.endYear === 'null')
 
-    console.log(state.yearRange)
-    console.log(entry.endYear)
-    console.log(state.yearRange.includes(entry.endYear))
-    console.log(isVisible)
-
   const cardClasses = [
     css.card,
     isVisible ? null : css.cardIsHidden

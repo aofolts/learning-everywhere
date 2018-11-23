@@ -2,6 +2,16 @@ import React from 'react'
 import {Link as GatsbyLink} from 'gatsby'
 import PropTypes from 'prop-types'
 
+const getFullSlug = (type,slug) => {
+  let base = ''
+
+  switch (type) {
+    case 'ContentfulCourseCategory': base = 'courses'; break;
+  }
+
+  return `${base}/${slug}`
+}
+
 const Link = ({
   page,
   url,
@@ -9,11 +19,8 @@ const Link = ({
   children
 }) => {
   if (page) {
-    const type = page.internal.type.replace('Contentful','').toLowerCase()
-
-    const slug = type === 'page'
-      ? page.slug
-      : `${type}/${page.slug}`
+    const type = page.internal.type
+    const slug = getFullSlug(type,page.slug)
 
     return (
       <GatsbyLink 

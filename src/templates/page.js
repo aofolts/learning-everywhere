@@ -8,7 +8,6 @@ import RichText from '../components/rich-text'
 const ContentSection = ({
   content
 }) => {
-  console.log(content)
   return (
     <section id='content'>
       <div className='wrapSmall'>

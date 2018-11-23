@@ -13,3 +13,11 @@ export const pageFieldsFragment = graphql`
     }
   }
 `
+
+export const socialAccountFragment = graphql`
+  fragment socialAccount on ContentfulSocialAccount {
+    id
+    platform
+    url
+  }
+`
