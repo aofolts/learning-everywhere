@@ -53,8 +53,6 @@ class Header extends Component {
   }
 
   setExpandedMenuItemId = id => {
-    console.log(id + ' ' + this.state.expandedMenuItemId)
-
     if (id === this.state.expandedMenuItemId) {
       id = null
     }
