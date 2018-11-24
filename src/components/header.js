@@ -120,7 +120,7 @@ class Header extends Component {
   }
 }
 
-export const query = graphql`
+const query = graphql`
   {
     settings: contentfulSettings(name: {eq: "Settings"}) {
       menuItems {

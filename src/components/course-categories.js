@@ -44,7 +44,7 @@ const IntroSection = ({data}) => {
   )
 }
 
-export const query = graphql`
+const query = graphql`
   {
     coursesInfo: contentfulLayoutPageCourses(name: {eq: "Courses"}) {
       overview {

@@ -49,14 +49,16 @@ class HeroBar extends Component {
 
 export default props => (
   <StaticQuery
-    query={graphql`
-      {
-        location: contentfulLocation(name: {eq: "Learning Everywhere"}) {
-          phone
-          fax
-        }
-      }
-    `}
+    query={query}
     render={data => <HeroBar data={data} {...props} />}
   />
 )
+
+const query = graphql`
+  {
+    location: contentfulLocation(name: {eq: "Learning Everywhere"}) {
+      phone
+      fax
+    }
+  }
+`
