@@ -21,3 +21,16 @@ export const socialAccountFragment = graphql`
     url
   }
 `
+
+export const seoFragment = graphql`
+  fragment seoFields on ContentfulSeo {
+    title
+    description {
+      description
+      childMarkdownRemark {
+        excerpt(pruneLength: 120)
+      }
+    }
+    keywords   
+  }
+`

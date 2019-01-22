@@ -35,6 +35,7 @@ const ContactForm = () => {
       </div>
       <input type="hidden" name="form-name" value="contact"/>
       <input type='hidden' name="honeypot"/>
+      <div data-netlify-recaptcha="true"></div>
       <button type='submit' className={['primaryButton',css.submit].join(' ')}>Send it</button>
     </form>
   )

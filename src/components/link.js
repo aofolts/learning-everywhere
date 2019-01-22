@@ -2,7 +2,7 @@ import React from 'react'
 import {Link as GatsbyLink} from 'gatsby'
 import PropTypes from 'prop-types'
 
-const getFullSlug = (type,slug) => {
+export const getFullSlug = (type,slug) => {
   let base = ''
 
   switch (type) {
